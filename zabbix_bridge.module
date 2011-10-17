@@ -1,5 +1,4 @@
 <?php
-
 // $Id$
 
 include_once 'zabbix_functions.php';
@@ -110,6 +109,16 @@ function zabbix_bridge_menu() {
         'weight' => 30,
         'access arguments' => array(PERM_ADMIN),
     );
+
+    // Catch the redirected user
+    $items['dashboard/redirected'] = array(
+        'title' => 'Login for Dashboard',
+        'page callback' => 'zabbix_dashboard_redirect',
+        'access arguments' => array('access content'),
+        'type' => MENU_CALLBACK,
+        'file' => 'zabbix_bridge.dashboard.inc',
+    );
+
 
     // Redirect to the dashboard
     $items['dashboard'] = array(

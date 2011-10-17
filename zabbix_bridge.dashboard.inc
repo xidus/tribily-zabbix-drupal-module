@@ -35,3 +35,16 @@ function zabbix_dashboard_dashboard()
 
 }
 
+function zabbix_dashboard_redirect()
+{
+	global $user;
+	if(user_is_logged_in())
+	{
+		// it should work to simply call the function
+		return zabbix_dashboard_dashboard();
+	}
+	else
+	{
+		return "Please login for using the Dashboard".drupal_get_form('user_login');
+	}
+}
